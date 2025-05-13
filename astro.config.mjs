@@ -1,6 +1,6 @@
 // @ts-check
-import node from "@astrojs/node"
 import react from "@astrojs/react"
+import vercel from "@astrojs/vercel"
 import clerk from "@clerk/astro"
 import { dark } from "@clerk/themes"
 import tailwindcss from "@tailwindcss/vite"
@@ -22,5 +22,5 @@ export default defineConfig({
 	devToolbar: { enabled: false },
 	vite: { plugins: [tailwindcss()] },
 	integrations: [clerk({ appearance: { baseTheme: dark } }), react(), icon()],
-	adapter: node({ mode: "standalone" })
+	adapter: vercel()
 })
