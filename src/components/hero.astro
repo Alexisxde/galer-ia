@@ -1,5 +1,9 @@
 ---
+import ArrowUpIcon from "@/components/icons/arrow-up.svg"
 import Badge from "@/components/ui/badge.astro"
+import { Image } from "astro:assets"
+import Dog1 from "public/hero/dog-1.jpg"
+import Dog2 from "public/hero/dog-2.jpg"
 ---
 
 <section class="mx-auto flex max-w-7xl flex-col gap-4 px-5 pt-6 lg:pt-10">
@@ -15,10 +19,21 @@ import Badge from "@/components/ui/badge.astro"
 			with perfectly matched and unique images.
 		</p>
 	</div>
-	<section class="grid w-full grid-cols-3 grid-rows-5 gap-4 md:grid-cols-5">
-		<div class="relative row-span-4 max-h-80 overflow-hidden rounded-md">
-			<img src="/hero/dog-1.jpg" />
-			<h2 class="absolute bottom-0 z-10 p-4 text-2xl font-semibold">
+	<section
+		class="grid max-h-96 w-full grid-cols-3 grid-rows-5 gap-4 md:grid-cols-5">
+		<div class="relative row-span-4 overflow-hidden rounded-md">
+			<Image
+				src={Dog1}
+				width={800}
+				height={600}
+				loading="lazy"
+				format="webp"
+				class="size-full object-cover"
+				alt={`The Peaceful Garden In a vibrant, lush garden, a playful dog named Buddy
+				is enjoying a sunny afternoon. Buddy is a fluffy, golden retriever with
+				bright brown eyes and an adventurous spirit.`}
+			/>
+			<h2 class="absolute bottom-0 z-10 p-4 text-lg font-semibold md:text-2xl">
 				AI Powered Creativity
 			</h2>
 			<div
@@ -27,22 +42,49 @@ import Badge from "@/components/ui/badge.astro"
 		</div>
 		<div
 			class="row-span-2 rounded-md bg-orange-400/10 text-orange-400 ring-1 ring-orange-400/30 ring-inset">
+			<h2 class="p-3 md:p-4 text-2xl font-semibold uppercase md:text-4xl">
+				Art created by AI
+			</h2>
 		</div>
-		<div
-			class="group row-span-2 rounded-md border border-neutral-800 bg-neutral-900">
-			<h2 class="p-4 text-lg font-semibold uppercase">Try it free</h2>
-		</div>
+		<a
+			href="/generate"
+			class="group relative row-span-2 rounded-md border border-neutral-800 bg-neutral-900">
+			<h2 class="p-3 md:p-4 text-2xl font-semibold uppercase md:text-6xl">
+				Try it free
+			</h2>
+			<ArrowUpIcon
+				class="absolute right-4 bottom-3.5 size-8 stroke-2 transition-transform duration-300 ease-in-out group-hover:translate-2 group-hover:-translate-y-1 md:size-12 md:stroke-[4]"
+			/>
+		</a>
 		<div
 			class="col-span-2 col-start-2 row-span-2 row-start-3 flex w-full flex-col rounded-md border border-neutral-800 bg-neutral-900 p-4">
 			<span class="text-lg font-medium uppercase">Image prompt</span>
-			<p class="flex-1 text-sm text-neutral-400">
+			<p class="flex-1 text-xs text-neutral-400 md:text-sm">
 				The Peaceful Garden In a vibrant, lush garden, a playful dog named Buddy
 				is enjoying a sunny afternoon. Buddy is a fluffy, golden retriever with
 				bright brown eyes and an adventurous spirit.
 			</p>
 		</div>
 		<div
-			class="col-span-2 col-start-4 row-span-4 row-start-1 hidden rounded-md bg-yellow-500 md:block">
+			class="relative col-span-2 col-start-4 row-span-4 row-start-1 hidden overflow-hidden rounded-md md:block">
+			<Image
+				src={Dog2}
+				width={800}
+				height={800}
+				loading="lazy"
+				format="webp"
+				class="size-full object-cover"
+				alt={`The Peaceful Garden In a vibrant, lush garden, a playful dog named Buddy
+				is enjoying a sunny afternoon. Buddy is a fluffy, golden retriever with
+				bright brown eyes and an adventurous spirit.`}
+			/>
+			<h2
+				class="absolute bottom-0 z-10 p-4 text-lg font-semibold capitalize md:text-5xl">
+				High Quality AI Results
+			</h2>
+			<div
+				class="absolute top-0 bottom-0 z-5 size-full bg-gradient-to-b from-transparent from-40% via-black/20 to-black/80">
+			</div>
 		</div>
 	</section>
 </section>
