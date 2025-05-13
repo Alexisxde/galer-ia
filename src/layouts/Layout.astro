@@ -1,0 +1,24 @@
+---
+import "@/styles/global.css"
+import "@fontsource-variable/sora"
+import { ClientRouter as ViewTransition } from "astro:transitions"
+import { Toaster } from "sonner"
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransition />
+	</head>
+	<body class="max-w-8xl mx-auto">
+		<slot />
+		<Toaster client:load theme="dark" />
+	</body>
+</html>

@@ -1,0 +1,28 @@
+---
+import Sidebar from "@/components/sidebar.astro"
+import Layout from "@/layouts/Layout.astro"
+import { UserButton } from "@clerk/astro/components"
+
+interface Props {
+	title: string
+	name: string
+}
+
+const { title, name } = Astro.props
+---
+
+<Layout {title}>
+	<div class="flex">
+		<Sidebar />
+		<div class="flex w-full flex-col">
+			<header
+				class="sticky top-0 z-20 flex items-center justify-between border-b-2 border-neutral-800 bg-neutral-900 p-6">
+				<h1 class="text-2xl font-medium">{name}</h1>
+				<UserButton />
+			</header>
+			<main class="flex-1">
+				<slot />
+			</main>
+		</div>
+	</div>
+</Layout>

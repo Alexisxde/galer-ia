@@ -1,0 +1,25 @@
+---
+import Hero from "@/components/hero.astro"
+import Mask from "@/components/mask.astro"
+import Button from "@/components/ui/button.astro"
+import Layout from "@/layouts/Layout.astro"
+import { SignedIn, SignedOut, UserButton } from "@clerk/astro/components"
+---
+
+<Layout title="GalerIA - AI Image Generator">
+	<header
+		class="sticky top-0 z-20 flex items-center justify-between border-b border-neutral-800 bg-neutral-900 px-8 py-4">
+		<div></div>
+		<div class="flex items-center gap-4">
+			<SignedOut>
+				<Button href="/sign-in" variant="outline">Log In</Button>
+			</SignedOut>
+			<SignedIn>
+				<Button href="/gallery" variant="ghost">My Gallery</Button>
+				<UserButton />
+			</SignedIn>
+		</div>
+	</header>
+	<Hero />
+	<Mask />
+</Layout>

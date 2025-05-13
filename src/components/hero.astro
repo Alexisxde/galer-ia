@@ -1,0 +1,48 @@
+---
+import Badge from "@/components/ui/badge.astro"
+---
+
+<section class="mx-auto flex max-w-7xl flex-col gap-4 px-5 pt-6 lg:pt-10">
+	<div class="flex max-w-4xl flex-col gap-4">
+		<Badge class="max-w-32 rounded-full" size="sm" variant="orange">
+			AI Generator
+		</Badge>
+		<h1 class="text-6xl font-semibold text-pretty uppercase md:text-7xl">
+			Generate your ideas into stunning visuals
+		</h1>
+		<p class="text-sm text-pretty text-gray-400 md:text-base">
+			Introducing GalerIA, the Generative AI image for brings your ideas to life
+			with perfectly matched and unique images.
+		</p>
+	</div>
+	<section class="grid w-full grid-cols-3 grid-rows-5 gap-4 md:grid-cols-5">
+		<div class="relative row-span-4 max-h-80 overflow-hidden rounded-md">
+			<img src="/src/assets/hero/dog-1.jpg" />
+			<h2 class="absolute bottom-0 z-10 p-4 text-2xl font-semibold">
+				AI Powered Creativity
+			</h2>
+			<div
+				class="absolute top-0 bottom-0 z-5 size-full bg-gradient-to-b from-transparent from-40% via-black/20 to-black/80">
+			</div>
+		</div>
+		<div
+			class="row-span-2 rounded-md bg-orange-400/10 text-orange-400 ring-1 ring-orange-400/30 ring-inset">
+		</div>
+		<div
+			class="group row-span-2 rounded-md border border-neutral-800 bg-neutral-900">
+			<h2 class="p-4 text-lg font-semibold uppercase">Try it free</h2>
+		</div>
+		<div
+			class="col-span-2 col-start-2 row-span-2 row-start-3 flex w-full flex-col rounded-md border border-neutral-800 bg-neutral-900 p-4">
+			<span class="text-lg font-medium uppercase">Image prompt</span>
+			<p class="flex-1 text-sm text-neutral-400">
+				The Peaceful Garden In a vibrant, lush garden, a playful dog named Buddy
+				is enjoying a sunny afternoon. Buddy is a fluffy, golden retriever with
+				bright brown eyes and an adventurous spirit.
+			</p>
+		</div>
+		<div
+			class="col-span-2 col-start-4 row-span-4 row-start-1 hidden rounded-md bg-yellow-500 md:block">
+		</div>
+	</section>
+</section>

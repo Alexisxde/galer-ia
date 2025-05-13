@@ -1,0 +1,28 @@
+---
+import { cn } from "@/lib/utils"
+import type { HTMLAttributes } from "astro/types"
+
+interface Props extends HTMLAttributes<"input"> {
+	id: string
+}
+
+const { type = "text", id, class: className, ...rest } = Astro.props
+---
+
+<div class="relative">
+	<input
+		{type}
+		{id}
+		class={cn(
+			"peer block w-full rounded-lg border border-neutral-300 py-2 pr-4 pl-3 transition-colors duration-200 ease-in-out hover:border-neutral-300 focus:border-neutral-400 focus:outline-none dark:border-neutral-800 dark:hover:border-neutral-700 dark:focus:border-neutral-700",
+			className
+		)}
+		placeholder=" "
+		{...rest}
+	/>
+	<label
+		for={id}
+		class="absolute -top-3 left-3 bg-neutral-900 p-1 text-sm text-[10px] text-neutral-400 transition-all duration-200 ease-in-out peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-placeholder-shown:text-neutral-400 peer-focus:-top-3 peer-focus:bg-neutral-100 peer-focus:p-1 peer-focus:text-[10px] peer-focus:text-neutral-400 dark:peer-placeholder-shown:text-neutral-400 dark:peer-focus:bg-neutral-900 dark:peer-focus:text-neutral-400">
+		<slot />
+	</label>
+</div>

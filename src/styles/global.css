@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+	--default-font-family: "Sora Variable", sans-serif;
+	--container-8xl: 1366px;
+	--animate-rippling: rippling 600ms ease-out;
+
+	@keyframes rippling {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			transform: scale(2);
+			opacity: 0;
+		}
+	}
+}
+
+@layer utilities {
+	:root {
+		--scrollbar-color: rgba(255, 255, 255, 0.3);
+	}
+
+	* {
+		-webkit-tap-highlight-color: transparent;
+		scrollbar-color: var(--scrollbar-color) transparent;
+		scrollbar-width: thin;
+	}
+}
+
+html {
+	@apply bg-neutral-900 text-neutral-100;
+}
+
+.cl-card {
+	@apply gap-4;
+}
+
+.cl-formFieldInput,
+.cl-card,
+.cl-userButtonPopoverMain,
+.cl-navbar {
+	background: var(--color-neutral-800) !important;
+}
+
+.cl-scrollBox {
+	@apply bg-neutral-900;
+}
+
+.cl-userButtonPopoverCard {
+	@apply max-w-56;
+}
+
+.cl-main {
+	flex-flow: column-reverse;
+}
+
+.cl-footer,
+.cl-headerSubtitle,
+.cl-userButtonPopoverFooter,
+.cl-internal-1dauvpw {
+	@apply hidden;
+}
+
+.cl-formButtonPrimary {
+	@apply flex cursor-pointer items-center justify-center gap-2 rounded-md bg-neutral-100 px-4 py-2 text-sm text-neutral-900 capitalize transition-all duration-300 ease-in-out hover:bg-neutral-300 focus:outline-none;
+}
