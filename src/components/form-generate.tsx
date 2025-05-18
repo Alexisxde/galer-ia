@@ -11,7 +11,9 @@ const SIZE: Record<string, string> = {
 export default function FormGenerate() {
 	const [data, setData] = useState<Images | null>(null)
 	const [loading, setLoading] = useState(false)
-	const [error, setError] = useState(null)
+	const [error, setError] = useState<{ type: string; message: string } | null>(
+		null
+	)
 
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault()
@@ -64,7 +66,7 @@ export default function FormGenerate() {
 						alt={data.prompt}
 					/>
 				)}
-				{error && <p className="text-sm text-red-500">{error?.message}</p>}
+				{error && <p className="text-sm text-red-500">{error.message}</p>}
 			</div>
 			<div className="flex w-full items-center">
 				<form
