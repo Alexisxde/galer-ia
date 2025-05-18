@@ -3,15 +3,15 @@
 @theme {
 	--default-font-family: "Sora Variable", sans-serif;
 	--container-8xl: 1366px;
-	--animate-rippling: rippling 600ms ease-out;
-
-	@keyframes rippling {
-		0% {
-			opacity: 1;
-		}
-		100% {
-			transform: scale(2);
+	--animate-border-width: border-width 3s infinite alternate;
+	@keyframes border-width {
+		from {
+			width: 10px;
 			opacity: 0;
+		}
+		to {
+			width: 100px;
+			opacity: 1;
 		}
 	}
 }

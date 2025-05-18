@@ -25,5 +25,5 @@ pnpm-debug.log*
 # vscode setting folder
 .vscode/
 
-/migrations
+migrations/
 pnpm-lock.yaml
