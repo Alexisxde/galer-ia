@@ -1,11 +1,9 @@
 ---
-import type { ImagesTableType } from "@/db/schema"
 import AsideLayout from "@/layouts/AsideLayout.astro"
+import type { ImagesTableType } from "@/types"
 
 const { userId } = Astro.locals.auth()
-if (!userId) {
-	return Astro.redirect("/login")
-}
+if (!userId) return Astro.redirect("/sign-in")
 
 let images = []
 

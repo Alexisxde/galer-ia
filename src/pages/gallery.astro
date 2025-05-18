@@ -3,9 +3,7 @@ import AsideLayout from "@/layouts/AsideLayout.astro"
 import type { Images } from "@/types"
 
 const { userId } = Astro.locals.auth()
-if (!userId) {
-	return Astro.redirect("/login")
-}
+if (!userId) return Astro.redirect("/sign-in")
 
 let images = []
 

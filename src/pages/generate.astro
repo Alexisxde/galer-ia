@@ -3,9 +3,7 @@ import FormGenerate from "@/components/form-generate.tsx"
 import AsideLayout from "@/layouts/AsideLayout.astro"
 
 const { userId } = Astro.locals.auth()
-if (!userId) {
-	return Astro.redirect("/login")
-}
+if (!userId) return Astro.redirect("/sign-in")
 ---
 
 <AsideLayout title="Generate images with AI" name="Generate">
