@@ -4,6 +4,11 @@
 	--default-font-family: "Sora Variable", sans-serif;
 	--container-8xl: 1366px;
 	--animate-border-width: border-width 3s infinite alternate;
+	--animate-fade-in: fade-in 300ms ease-out forwards;
+	--animate-fade-out: fade-out 200ms ease-in forwards;
+	--animate-modal-enter: modal-enter 300ms ease-out forwards;
+	--animate-modal-leave: modal-leave 200ms ease-in forwards;
+
 	@keyframes border-width {
 		from {
 			width: 10px;
@@ -12,6 +17,46 @@
 		to {
 			width: 100px;
 			opacity: 1;
+		}
+	}
+
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes fade-out {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes modal-enter {
+		from {
+			opacity: 0;
+			transform: translateY(16px) scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@keyframes modal-leave {
+		from {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+		to {
+			opacity: 0;
+			transform: translateY(16px) scale(0.95);
 		}
 	}
 }
@@ -64,4 +109,25 @@ html {
 
 .cl-formButtonPrimary {
 	@apply flex cursor-pointer items-center justify-center gap-2 rounded-md bg-neutral-100 px-4 py-2 text-sm text-neutral-900 capitalize transition-all duration-300 ease-in-out hover:bg-neutral-300 focus:outline-none;
+}
+
+.background.show {
+	animation: fade-in 0.3s ease-out forwards;
+}
+
+.background.hide {
+	animation: fade-out 0.2s ease-in forwards;
+}
+
+.modal {
+	opacity: 0;
+	transform: translateY(16px) scale(0.95);
+}
+
+.modal.show {
+	animation: modal-enter 0.3s ease-out forwards;
+}
+
+.modal.hide {
+	animation: modal-leave 0.2s ease-in forwards;
 }

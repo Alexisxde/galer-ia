@@ -1,13 +1,51 @@
-# Extend0
+# GalerIA 🖼️✨
 
-Extend0 es una herramienta web inteligente que permite a los usuarios subir una imagen y expandir sus bordes de forma automática usando inteligencia artificial. Ya sea que quieras darle más espacio a una foto, reencuadrar una escena o extender un fondo sin perder coherencia visual, esta app lo hace por ti.
+**GalerIA** es una aplicación web de galería de imágenes generadas por inteligencia artificial. Permite a los usuarios autenticados generar, explorar y gestionar imágenes generadas por IA en una experiencia visual atractiva y moderna.
 
-Ideal para diseñadores, creadores de contenido o cualquiera que necesite una imagen más grande sin recortarla ni deformarla.
+## 🌐 Demo
 
-🧰 Características clave:
+🔗 [Ver demo](https://galer-ia.vercel.app)
 
-- Subida rápida de imágenes
-- Expansión inteligente con IA (outpainting)
-- Vista previa antes y después
-- Descarga del resultado final
-- Interfaz simple y centrada en la creatividad
+📁 [Ver repo](https://github.com/Alexisxde/galer-ia)
+
+## 📸 Capturas de pantalla
+
+![GalerIA Home](./public/screenshots/home.png)
+![GalerIA Galería](./public/screenshots/gallery.png)
+![GalerIA Login](./public/screenshots/sign-in.png)
+
+## 🛠️ Tecnologías utilizadas
+
+- [Astro](https://astro.build/) – Framework web para contenido veloz
+- [React](https://reactjs.org/) – Componentes interactivos
+- [Tailwind CSS](https://tailwindcss.com/) – Estilos rápidos y responsivos
+- [Clerk](https://clerk.dev/) – Autenticación de usuarios
+- [Turso](https://turso.tech/) – Base de datos edge rápida
+- [Drizzle ORM](https://orm.drizzle.team/) – ORM tipo-safe para consultas
+
+## 🔐 Uso de Clerk
+
+GalerIA utiliza **Clerk** como sistema de autenticación principal. Esto permite:
+
+- Registro e inicio de sesión de usuarios con OAuth (GitHub y Google).
+- Protección de rutas de usuario (solo usuarios logueados pueden subir imágenes).
+- Integración sencilla con el estado de sesión y perfil del usuario.
+- Middleware en Astro para proteger páginas específicas.
+- Personalización del widget de autenticación.
+
+🧪 ¿Cómo correr el proyecto localmente?
+
+```bash
+git clone https://github.com/Alexisxde/galer-ia.git
+cd galer-ia
+pnpm install
+pnpm dev
+```
+
+Configura las variables de entorno en el .env.
+
+🧑‍💻 Equipo
+
+- Olivarez Alexis
+
+Este proyecto fue creado para la Hackaton de **midudev - Clerk** 🚀

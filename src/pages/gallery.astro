@@ -1,6 +1,7 @@
 ---
+import Modal from "@/components/modal"
 import AsideLayout from "@/layouts/AsideLayout.astro"
-import type { Images } from "@/types"
+import type { ImagesTableType } from "@/types"
 
 const { userId } = Astro.locals.auth()
 if (!userId) return Astro.redirect("/sign-in")
@@ -8,7 +9,7 @@ if (!userId) return Astro.redirect("/sign-in")
 let images = []
 
 const res = await fetch(
-	`http://localhost:4321/api/gallery/${Astro.locals.auth().userId}`,
+	`${import.meta.env.APP_URL}/api/gallery/${Astro.locals.auth().userId}`,
 	{ method: "GET", headers: { "Content-Type": "application/json" } }
 )
 const data = await res.json()
@@ -22,8 +23,8 @@ images = data
 				<div>No hay nada</div>
 			) : (
 				<div class="columns-2 gap-4 md:columns-3xs">
-					{images.map(({ url, prompt }: Images) => (
-						<img class="mb-4 rounded-md" src={url} alt={prompt} />
+					{images.map((image: ImagesTableType) => (
+						<Modal {...image} client:load />
 					))}
 				</div>
 			)

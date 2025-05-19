@@ -1,4 +1,5 @@
 ---
+import Modal from "@/components/modal.tsx"
 import AsideLayout from "@/layouts/AsideLayout.astro"
 import type { ImagesTableType } from "@/types"
 
@@ -7,7 +8,7 @@ if (!userId) return Astro.redirect("/sign-in")
 
 let images = []
 
-const res = await fetch(`${import.meta.env.APP_URL}/api/gallery`, {
+const res = await fetch(`${import.meta.env.APP_URL}/api/gallery?limit=30`, {
 	method: "GET",
 	headers: { "Content-Type": "application/json" }
 })
@@ -15,15 +16,15 @@ const data = await res.json()
 images = data
 ---
 
-<AsideLayout title="Gallery | GalerIA" name="Gallery">
+<AsideLayout title="Community | GalerIA" name="Community">
 	<section class="p-4">
 		{
 			images.length === 0 ? (
 				<div>No hay nada</div>
 			) : (
 				<div class="columns-2 gap-4 md:columns-3xs">
-					{images.map(({ url, prompt }: ImagesTableType) => (
-						<img class="mb-4 rounded-md" src={url} alt={prompt} />
+					{images.map((image: ImagesTableType) => (
+						<Modal {...image} client:load />
 					))}
 				</div>
 			)
