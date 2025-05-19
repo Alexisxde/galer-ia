@@ -35,9 +35,9 @@ export default function Modal({ _id, prompt, id_model }: Props) {
 	const [open, setOpen] = useState(false)
 	const [copy, setCopy] = useState(false)
 
-	const handleCopy = async () => {
+	const handleCopy = async (copy: string) => {
 		try {
-			await navigator.clipboard.writeText(prompt)
+			await navigator.clipboard.writeText(copy)
 			setCopy(true)
 			setTimeout(() => setCopy(false), 2000)
 		} catch (err) {
@@ -50,12 +50,51 @@ export default function Modal({ _id, prompt, id_model }: Props) {
 
 	return (
 		<>
-			<img
+			<div
 				onClick={() => setOpen(true)}
-				className="mb-4 rounded-md"
-				src={`/image/${_id}`}
-				alt={prompt}
-			/>
+				className="group relative cursor-pointer">
+				<img className="mb-4 rounded-md" src={`/image/${_id}`} alt={prompt} />
+				<div className="absolute top-2 right-3 z-10 hidden gap-1 group-hover:flex">
+					<button
+						title="Copy url"
+						onClick={e => {
+							e.stopPropagation()
+							handleCopy(`${window.location.hostname}/image/${_id}`)
+						}}
+						className="cursor-pointer items-center justify-center gap-2 rounded-md border p-2 transition-all duration-300 ease-in-out hover:border-neutral-300 hover:bg-neutral-200 focus:outline-none dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700 dark:hover:bg-neutral-800">
+						{copy ? (
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								className="size-4">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="m4.5 12.75 6 6 9-13.5"
+								/>
+							</svg>
+						) : (
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								strokeWidth="1.5"
+								stroke="currentColor"
+								className="size-4">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+								/>
+							</svg>
+						)}
+					</button>
+				</div>
+				<div className="absolute top-0 bottom-0 z-5 size-full rounded-md bg-gradient-to-b from-transparent from-40% via-black/20 to-black/80 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"></div>
+			</div>
 			{open && (
 				<div className="relative z-50">
 					<div
@@ -99,7 +138,7 @@ export default function Modal({ _id, prompt, id_model }: Props) {
 													<button
 														title="Copy prompt"
 														className="flex cursor-pointer items-center justify-center gap-2 rounded-md border p-2 capitalize transition-all duration-300 ease-in-out hover:border-neutral-300 hover:bg-neutral-200 focus:outline-none dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700 dark:hover:bg-neutral-800"
-														onClick={handleCopy}>
+														onClick={() => handleCopy(prompt)}>
 														{!copy ? (
 															<svg
 																xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +177,7 @@ export default function Modal({ _id, prompt, id_model }: Props) {
 											{model && (
 												<div className="relative w-fit">
 													<img
-														className="rounded-md object-cover size-24"
+														className="size-24 rounded-md object-cover"
 														src={model.image}
 														alt={model.name}
 													/>
