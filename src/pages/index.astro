@@ -4,6 +4,7 @@ import Mask from "@/components/mask.astro"
 import Button from "@/components/ui/button.astro"
 import Layout from "@/layouts/Layout.astro"
 import { SignedIn, SignedOut, UserButton } from "@clerk/astro/components"
+import { Icon } from "astro-icon/components"
 ---
 
 <Layout title="GalerIA - AI Image Generator">
@@ -15,7 +16,20 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/astro/components"
 				<Button href="/sign-in" variant="outline">Log In</Button>
 			</SignedOut>
 			<SignedIn>
-				<Button href="/gallery" variant="ghost">My Gallery</Button>
+				<a
+					href="/generate"
+					class="relative inline-block overflow-hidden rounded-md p-[1px]">
+          <span
+						class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#171717_0%,#737373_50%,#171717_100%)]">
+					</span>
+          <div
+						class="inline-flex gap-2 size-full cursor-pointer justify-center rounded-md bg-neutral-900 px-4 py-2 text-sm leading-5 font-medium text-neutral-100 backdrop-blur-xl">
+						<span class="inline-flex items-center pl-2 text-white">
+              Generate
+						</span>
+            <Icon name="star" class="size-5" />
+					</div>
+				</a>
 				<UserButton />
 			</SignedIn>
 		</div>
